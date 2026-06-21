@@ -2,44 +2,82 @@ package ex_20_OOPs_Super_Abstraction;
 
 public class Lab186_AC {
     public static void main(String[] args) {
-        son s1 = new son();
-        s1.money();
-
+        nexon n1 = new nexon();
+        n1.drive();
     }
+
 }
 
-class son implements father, mother{
+class nexon extends engine1 implements type, gear{
+
+    void drive(){
+        startTheEngine();
+        changeGear();
+        super.stopTheEngine();
+        rubbertype();
+        blacktye();
+
+    }
     @Override
-    public void money(){
-        System.out.println("Son money");
+    public void startTheEngine(){
+        System.out.println("Start the engine");
     }
 
-    public void f1(){
-        System.out.println("Son f1");
+    @Override
+    public void changeGear() {
+        System.out.println("change the gear");
     }
 
-    public void df(){
-        father.super.df();
-        mother.super.df();
+    public void stopTheEngine(){
+        super.stopTheEngine();
+        System.out.println("engine stop");
+    }
+
+    @Override
+    public void blacktye() {
+
+    }
+
+    @Override
+    public void rubbertype() {
+
     }
 }
 
-interface father{
-    void money();
-    void f1();
 
-    default void df(){
-        System.out.println("df");
+
+
+
+
+
+abstract class engine1{
+    abstract void startTheEngine();
+    void stopTheEngine(){
+        System.out.println("stop the engine");
     }
 
 }
 
-interface mother{
-    void money();
-    void f1();
 
-    default void df(){
-        System.out.println("mf");
+
+
+
+interface type{
+    void rubbertype();
+    void blacktye();
+
+    default void bt1(){
+
     }
+    default void bt2(){
 
+    }
+}
+
+
+
+
+
+interface gear{
+    void changeGear();
 }
